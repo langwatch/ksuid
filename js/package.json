@@ -1,0 +1,66 @@
+{
+  "name": "@langwatch/ksuid",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "Generate prefixed, k-sorted globally unique identifiers with TypeScript support",
+  "homepage": "https://github.com/langwatch/ksuid",
+  "bugs": "https://github.com/langwatch/ksuid/issues",
+  "license": "MIT",
+  "author": "LangWatch (https://langwatch.ai)",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/langwatch/ksuid.git"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest --run src/__tests__/base62.test.ts src/__tests__/instance.test.ts src/__tests__/validation.test.ts src/__tests__/ksuid.test.ts src/__tests__/main.test.ts",
+    "test:platform": "vitest --run src/__tests__/platform.test.ts",
+    "test:coverage": "vitest --coverage src/__tests__/base62.test.ts src/__tests__/instance.test.ts src/__tests__/validation.test.ts src/__tests__/ksuid.test.ts src/__tests__/main.test.ts",
+    "test:ui": "vitest --ui",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.0.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^9.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "keywords": [
+    "ksuid",
+    "id",
+    "identifier",
+    "unique",
+    "sortable",
+    "typescript",
+    "zero-dependency"
+  ]
+}
