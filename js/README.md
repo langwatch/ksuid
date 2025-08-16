@@ -37,10 +37,10 @@ import { generate, parse } from '@langwatch/ksuid';
 // Generate a KSUID
 const ksuid = generate('user');
 console.log(ksuid.toString());
-// Output: user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F
+// Output: user_00028U9MDT583X9eXPG1IU0ptdl1l
 
 // Parse a KSUID
-const parsed = parse('user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F');
+const parsed = parse('user_00028U9MDT583X9eXPG1IU0ptdl1l');
 console.log(parsed.resource); // 'user'
 console.log(parsed.environment); // 'prod'
 console.log(parsed.date); // Date object
@@ -57,7 +57,7 @@ setEnvironment('dev');
 // Generate dev-specific KSUID
 const devKsuid = generate('order');
 console.log(devKsuid.toString());
-// Output: dev_order_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F
+// Output: dev_order_00028U9MDT583X9eXPG1IU0ptdl1l
 ```
 
 ### Advanced Usage
@@ -102,7 +102,7 @@ const ksuid = generate('user');
 Parses a KSUID string and returns a Ksuid instance.
 
 ```typescript
-const ksuid = parse('user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F');
+const ksuid = parse('user_00028U9MDT583X9eXPG1IU0ptdl1l');
 ```
 
 ### Environment Management
@@ -243,7 +243,7 @@ npm test
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](../LICENSE) file for details.
 
 ## Acknowledgments
 

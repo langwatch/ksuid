@@ -42,10 +42,10 @@ import { generate, parse } from '@langwatch/ksuid';
 // Generate a KSUID
 const ksuid = generate('user');
 console.log(ksuid.toString());
-// Output: user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F
+// Output: user_00028U9MDT583X9eXPG1IU0ptdl1m
 
 // Parse a KSUID
-const parsed = parse('user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F');
+const parsed = parse('user_00028U9MDT583X9eXPG1IU0ptdl1m');
 console.log(parsed.resource); // 'user'
 console.log(parsed.environment); // 'prod'
 console.log(parsed.date); // Date object
@@ -75,12 +75,12 @@ KSUID (K-Sortable Unique IDentifier) is a globally unique identifier that is:
 
 **Example:**
 ```
-prod_user_2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F
+prod_user_00028U9MDT583X9eXPG1IU0ptdl1m
 ```
 
 - `prod_` - Environment prefix (optional)
 - `user_` - Resource type prefix
-- `2XH7K9P8Q1R3S4T5U6V7W8X9Y0Z1A2B3C4D5E6F` - Base62 encoded payload containing:
+- `00028U9MDT583X9eXPG1IU0ptdl1m` - Base62 encoded payload containing:
   - 32-bit timestamp (seconds since epoch)
   - 64-bit instance identifier
   - 32-bit sequence number
@@ -161,7 +161,7 @@ The KSUID specification ensures compatibility across all language implementation
 
 ## License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - please see the LICENSE file in the respective language directory.
 
 ## Acknowledgments
 
