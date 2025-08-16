@@ -76,7 +76,7 @@ export class Node {
  
   /* eslint-disable @typescript-eslint/no-unused-vars, no-unused-vars */
   private defaultKsuidFactory(
-    environment: string,
+    _environment: string,
     _resource: string,
     _timestamp: number,
     _instance: Instance,
