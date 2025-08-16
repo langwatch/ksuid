@@ -104,7 +104,7 @@ describe('Ksuid', () => {
 
     it('should throw error for non-string input', () => {
       expect(() => {
-        Ksuid.parse(123 as any);
+        Ksuid.parse(123 as unknown);
       }).toThrow('Input must be a string');
     });
 
@@ -166,7 +166,7 @@ describe('Ksuid', () => {
     it('should return false for non-Ksuid objects', () => {
       const ksuid = new Ksuid('prod', 'user', 1234567890, testInstance, 0);
 
-      expect(ksuid.equals({} as any)).toBe(false);
+      expect(ksuid.equals({} as unknown)).toBe(false);
     });
   });
 

@@ -33,7 +33,7 @@ describe('Main API', () => {
 
     it('should throw error for non-string resource', () => {
       expect(() => {
-        generate(123 as any);
+        generate(123 as unknown);
       }).toThrow('resource must be a string');
     });
 
@@ -90,7 +90,7 @@ describe('Main API', () => {
 
     it('should throw error for non-string input', () => {
       expect(() => {
-        parse(123 as any);
+        parse(123 as unknown);
       }).toThrow('Input must be a string');
     });
   });
@@ -137,7 +137,7 @@ describe('Main API', () => {
 
     it('should throw error for invalid instance', () => {
       expect(() => {
-        setInstance({} as any);
+        setInstance({} as unknown);
       }).toThrow('instance must be an instance of Instance');
     });
   });

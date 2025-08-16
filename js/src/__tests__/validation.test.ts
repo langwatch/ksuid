@@ -29,9 +29,9 @@ describe('Validation', () => {
     });
 
     it('should throw for non-string values', () => {
-      expect(() => checkPrefix('test', 123 as any)).toThrow(ValidationError);
-      expect(() => checkPrefix('test', null as any)).toThrow(ValidationError);
-      expect(() => checkPrefix('test', undefined as any)).toThrow(ValidationError);
+      expect(() => checkPrefix('test', 123 as unknown)).toThrow(ValidationError);
+      expect(() => checkPrefix('test', null as unknown)).toThrow(ValidationError);
+      expect(() => checkPrefix('test', undefined as unknown)).toThrow(ValidationError);
     });
   });
 
@@ -49,7 +49,7 @@ describe('Validation', () => {
 
     it('should throw for non-integers', () => {
       expect(() => checkUint('test', 1.5, 1)).toThrow(ValidationError);
-      expect(() => checkUint('test', '123' as any, 1)).toThrow(ValidationError);
+      expect(() => checkUint('test', '123' as unknown, 1)).toThrow(ValidationError);
     });
 
     it('should throw for values too large', () => {
@@ -70,8 +70,8 @@ describe('Validation', () => {
     });
 
     it('should throw for non-Uint8Array values', () => {
-      expect(() => checkUint8Array('test', [1, 2, 3] as any, 3)).toThrow(ValidationError);
-      expect(() => checkUint8Array('test', 'test' as any, 4)).toThrow(ValidationError);
+      expect(() => checkUint8Array('test', [1, 2, 3] as unknown, 3)).toThrow(ValidationError);
+      expect(() => checkUint8Array('test', 'test' as unknown, 4)).toThrow(ValidationError);
     });
   });
 
@@ -87,8 +87,8 @@ describe('Validation', () => {
     });
 
     it('should throw for non-objects', () => {
-      expect(() => checkClass('test', 'string' as any, String)).toThrow(ValidationError);
-      expect(() => checkClass('test', 123 as any, Number)).toThrow(ValidationError);
+      expect(() => checkClass('test', 'string' as unknown, String)).toThrow(ValidationError);
+      expect(() => checkClass('test', 123 as unknown, Number)).toThrow(ValidationError);
     });
   });
 
@@ -99,9 +99,9 @@ describe('Validation', () => {
     });
 
     it('should throw for non-strings', () => {
-      expect(() => checkString('test', 123 as any)).toThrow(ValidationError);
-      expect(() => checkString('test', null as any)).toThrow(ValidationError);
-      expect(() => checkString('test', undefined as any)).toThrow(ValidationError);
+      expect(() => checkString('test', 123 as unknown)).toThrow(ValidationError);
+      expect(() => checkString('test', null as unknown)).toThrow(ValidationError);
+      expect(() => checkString('test', undefined as unknown)).toThrow(ValidationError);
     });
   });
 
@@ -116,7 +116,7 @@ describe('Validation', () => {
     });
 
     it('should throw for non-strings', () => {
-      expect(() => checkNonEmptyString('test', 123 as any)).toThrow(ValidationError);
+      expect(() => checkNonEmptyString('test', 123 as unknown)).toThrow(ValidationError);
     });
   });
 

@@ -62,6 +62,7 @@ export interface PlatformInfo {
  */
 export interface CryptoProvider {
   /** Fills the provided array with cryptographically secure random values */
+  // eslint-disable-next-line no-unused-vars
   getRandomValues: (array: Uint8Array) => Uint8Array;
   /** Optional method for generating random bytes (Node.js specific) */
   // eslint-disable-next-line no-unused-vars
