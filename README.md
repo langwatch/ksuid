@@ -3,16 +3,18 @@
 A modern, zero-dependency library for generating prefixed, k-sorted globally unique identifiers (KSUIDs) across multiple programming languages.
 
 [![NPM Version](https://img.shields.io/npm/v/@langwatch/ksuid.svg?style=flat)](https://www.npmjs.org/package/@langwatch/ksuid)
+[![PyPI Version](https://img.shields.io/pypi/v/langwatch-ksuid.svg?style=flat)](https://pypi.org/project/langwatch-ksuid/)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=main)](https://github.com/langwatch/ksuid/actions)
 [![Coverage Status](https://img.shields.io/codecov/c/github/langwatch/ksuid/main)](https://codecov.io/gh/langwatch/ksuid)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.org/package/@langwatch/ksuid)
 
 ## Features
 
 - ✅ **Zero Dependencies** - No external dependencies
 - ✅ **TypeScript First** - Full TypeScript support with strict typing
-- ✅ **Cross-Platform** - Works in Node.js, Browser, Bun, and Deno
+- ✅ **Cross-Platform** - Works in Python, Node.js: Browser, Bun, and Deno
 - ✅ **K-Sortable** - IDs are naturally sortable by creation time
 - ✅ **Environment Aware** - Support for different environments (prod, dev, staging, etc.)
 - ✅ **Instance Detection** - Automatic detection of Docker containers, MAC addresses, and PIDs
@@ -20,20 +22,13 @@ A modern, zero-dependency library for generating prefixed, k-sorted globally uni
 
 ## Available Implementations
 
-### JavaScript/TypeScript ✅
+### JavaScript/TypeScript ☕️
 
 The JavaScript implementation is production-ready and available on npm:
 
 ```bash
 npm install @langwatch/ksuid
 ```
-
-**Features:**
-- Zero dependencies
-- Full TypeScript support
-- Cross-platform compatibility (Node.js, Browser, Bun, Deno)
-- Automatic instance detection
-- Environment-aware ID generation
 
 **Quick Start:**
 ```typescript
@@ -52,6 +47,32 @@ console.log(parsed.date); // Date object
 ```
 
 📖 **[Full JavaScript Documentation](js/README.md)**
+
+### Python 🐍
+
+The Python implementation is production-ready and available on PyPI:
+
+```bash
+pip install langwatch-ksuid
+# or
+uv add langwatch-ksuid
+```
+
+**Quick Start:**
+```python
+from langwatch-ksuid import generate, parse
+
+# Generate a KSUID
+id = generate('user')
+print(id.to_string())
+# Output: user_00028U9MDT583X9eXPG1IU0ptdl1m
+
+# Parse a KSUID
+const parsed = parse('user_00028U9MDT583X9eXPG1IU0ptdl1m');
+console.log(parsed.resource); # 'user'
+console.log(parsed.environment); # 'prod'
+console.log(parsed.date); # Date object
+```
 
 ### Other Languages 🚧
 
@@ -113,19 +134,6 @@ prod_user_00028U9MDT583X9eXPG1IU0ptdl1m
 ```bash
 git clone https://github.com/langwatch/ksuid.git
 cd ksuid
-```
-
-### JavaScript Development
-
-```bash
-cd js
-npm install
-npm run build      # Build the library
-npm run dev        # Watch mode for development
-npm run test       # Run tests
-npm run test:coverage # Run tests with coverage
-npm run lint       # Run ESLint
-npm run type-check # TypeScript type checking
 ```
 
 ### Contributing
