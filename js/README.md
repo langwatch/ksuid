@@ -4,7 +4,6 @@ A modern, zero-dependency TypeScript library for generating prefixed, k-sorted g
 
 [![NPM Version](https://img.shields.io/npm/v/@langwatch/ksuid.svg?style=flat)](https://www.npmjs.org/package/@langwatch/ksuid)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=main)](https://github.com/langwatch/ksuid/actions)
-[![Coverage Status](https://img.shields.io/codecov/c/github/langwatch/ksuid/main)](https://codecov.io/gh/langwatch/ksuid)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.org/package/@langwatch/ksuid)
 
@@ -169,7 +168,7 @@ Advanced class for custom KSUID generation.
 
 This library works in the following environments:
 
-- **Node.js** (v16+) - Full support with automatic instance detection
+- **Node.js** (v18+) - Full support with automatic instance detection
 - **Browser** - Uses Web Crypto API
 - **Bun** - Native support
 - **Deno** - Native support
@@ -182,26 +181,6 @@ The library automatically detects the best instance identifier:
 2. **Node.js** - Uses MAC address + PID (if available)
 3. **Fallback** - Uses cryptographically secure random bytes
 
-## Migration from v1.x
-
-If you're migrating from the original `@cuvva/ksuid` package:
-
-```typescript
-// Old way
-const ksuid = require('@cuvva/ksuid');
-const id = ksuid.generate('user').toString();
-
-// New way
-import { generate } from '@langwatch/ksuid';
-const id = generate('user').toString();
-
-// Old way - environment management
-ksuid.environment = 'dev';
-
-// New way - environment management
-import { setEnvironment } from '@langwatch/ksuid';
-setEnvironment('dev');
-```
 
 ## Development
 
@@ -216,12 +195,12 @@ npm install
 ### Scripts
 
 ```bash
-npm run build      # Build the library
-npm run dev        # Watch mode for development
-npm run test       # Run tests
-npm run test:coverage # Run tests with coverage
-npm run lint       # Run ESLint
-npm run type-check # TypeScript type checking
+pnpm build         # Build the library
+pnpm dev           # Watch mode for development
+pnpm test          # Run tests
+pnpm test:coverage # Run tests with coverage
+pnpm lint          # Run ESLint
+pnpm typecheck    # TypeScript type checking
 ```
 
 ### Testing
@@ -229,7 +208,7 @@ npm run type-check # TypeScript type checking
 The library has comprehensive test coverage:
 
 ```bash
-npm test
+pnpm test
 ```
 
 ## Contributing
