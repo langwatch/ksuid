@@ -39,7 +39,7 @@ jobs:
 
     - name: Install dependencies
       working-directory: python
-      run: uv sync --dev --frozen
+      run: uv sync --extra dev --dev --frozen
 
     - name: Run linting
       working-directory: python
@@ -88,7 +88,7 @@ jobs:
     - name: Install dependencies
       working-directory: python
       run: |
-        uv sync --dev
+        uv sync --extra dev --dev
         uv pip install build
 
     - name: Copy README.md
