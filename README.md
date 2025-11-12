@@ -76,7 +76,7 @@ console.log(parsed.date); # Date object
 
 ### Other Languages 🚧
 
-We'll be adding support for other languages as we need them, Python will likely be the first one.
+We'll be adding support for other languages as we need them.
 
 ## What is KSUID?
 
@@ -157,6 +157,16 @@ To add support for a new programming language:
 4. Update this README with the new implementation
 5. Submit a pull request
 
+## Specification
+
+The KSUID specification ensures compatibility across all language implementations:
+
+- **Timestamp**: 32-bit Unix timestamp (seconds since epoch)
+- **Instance**: 64-bit instance identifier (MAC address, container ID, or random)
+- **Sequence**: 32-bit sequence number (increments for same timestamp)
+- **Encoding**: Base62 (URL-safe alphanumeric characters)
+- **Format**: `[environment_][resource_][payload]`
+
 ## Release
 
 This project uses [release-please](https://github.com/googleapis/release-please) to automate releases for both JavaScript and Python packages. See [RELEASE_PLEASE.md](RELEASE_PLEASE.md) for detailed documentation.
@@ -191,23 +201,6 @@ uv run pytest tests
 uv run python -m build
 uv publish
 ```
-
-### Prerequisites
-
-- Node.js 18+ with `pnpm` installed (for TypeScript package)
-- Python 3.9+ with [`uv`](https://docs.astral.sh/uv/) installed (for Python package)
-- Publish access to the `@langwatch` npm organization and the `langwatch-ksuid` PyPI project
-- GitHub secrets configured: `NPM_TOKEN` and `PYPI_API_TOKEN`
-
-## Specification
-
-The KSUID specification ensures compatibility across all language implementations:
-
-- **Timestamp**: 32-bit Unix timestamp (seconds since epoch)
-- **Instance**: 64-bit instance identifier (MAC address, container ID, or random)
-- **Sequence**: 32-bit sequence number (increments for same timestamp)
-- **Encoding**: Base62 (URL-safe alphanumeric characters)
-- **Format**: `[environment_][resource_][payload]`
 
 ## License
 
