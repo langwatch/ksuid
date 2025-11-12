@@ -4,8 +4,8 @@ A modern, zero-dependency library for generating prefixed, k-sorted globally uni
 
 [![NPM Version](https://img.shields.io/npm/v/@langwatch/ksuid.svg?style=flat)](https://www.npmjs.org/package/@langwatch/ksuid)
 [![PyPI Version](https://img.shields.io/pypi/v/langwatch-ksuid.svg?style=flat)](https://pypi.org/project/langwatch-ksuid/)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=main)](https://github.com/langwatch/ksuid/actions)
-[![Coverage Status](https://img.shields.io/codecov/c/github/langwatch/ksuid/main)](https://codecov.io/gh/langwatch/ksuid)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=master)](https://github.com/langwatch/ksuid/actions)
+[![Coverage Status](https://img.shields.io/codecov/c/github/langwatch/ksuid/master)](https://codecov.io/gh/langwatch/ksuid)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://www.npmjs.org/package/@langwatch/ksuid)
@@ -174,7 +174,7 @@ This project uses [release-please](https://github.com/googleapis/release-please)
 ### Automated Release Process
 
 1. **Make Changes**: Create PRs with [conventional commit messages](https://www.conventionalcommits.org/)
-2. **Merge to Main**: Release Please automatically creates release PRs when it detects releasable changes
+2. **Merge to Master**: Release Please automatically creates release PRs when it detects releasable changes
 3. **Review Release PR**: Check the generated changelog and version bumps
 4. **Merge Release PR**: This triggers automated publishing workflows for both packages
 
