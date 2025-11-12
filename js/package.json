@@ -1,6 +1,6 @@
 {
   "name": "@langwatch/ksuid",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "type": "module",
   "description": "Generate prefixed, k-sorted globally unique identifiers with TypeScript support",
   "homepage": "https://github.com/langwatch/ksuid",

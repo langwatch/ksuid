@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1](https://github.com/langwatch/ksuid/compare/ksuid-javascript/v2.0.0...ksuid-javascript/v2.0.1) (2025-11-12)
+
+
+### Bug Fixes
+
+* release please ([#2](https://github.com/langwatch/ksuid/issues/2)) ([dff78d7](https://github.com/langwatch/ksuid/commit/dff78d718bebcdc7a31404cbce279c103afda19e))
+
 ## [2.0.0] - 2024-01-15
 
 ### Added
