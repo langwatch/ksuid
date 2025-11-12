@@ -1,0 +1,50 @@
+name: release-please
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    outputs:
+      js_release_created: ${{ steps.release.outputs['js--release_created'] }}
+      js_tag_name: ${{ steps.release.outputs['js--tag_name'] }}
+      py_release_created: ${{ steps.release.outputs['python--release_created'] }}
+      py_tag_name: ${{ steps.release.outputs['python--tag_name'] }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: .release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  debug-outputs:
+    needs: release-please
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo outputs
+        shell: bash
+        env:
+          RELEASE_OUTPUTS: ${{ toJSON(needs.release-please.outputs) }}
+        run: |
+          echo "All release-please outputs:"
+          printf '%s\n' "$RELEASE_OUTPUTS"
+
+  publish-javascript:
+    if: ${{ needs.release-please.outputs.js_release_created }}
+    needs: release-please
+    uses: ./.github/workflows/javascript-cd.yml
+
+  publish-python:
+    if: ${{ needs.release-please.outputs.py_release_created }}
+    needs: release-please
+    uses: ./.github/workflows/python-cd.yml
+

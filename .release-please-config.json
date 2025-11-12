@@ -1,0 +1,43 @@
+{
+  "packages": {
+    "js": {
+      "component": "ksuid-javascript",
+      "package-name": "js",
+      "release-type": "node",
+      "include-component-in-tag": true,
+      "include-v-in-tag": true,
+      "prerelease": true,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "chore", "section": "Miscellaneous", "hidden": false },
+        { "type": "docs", "section": "Documentation", "hidden": false },
+        { "type": "refactor", "section": "Code Refactoring", "hidden": false }
+      ]
+    },
+    "python": {
+      "component": "ksuid-python",
+      "package-name": "python",
+      "release-type": "python",
+      "include-component-in-tag": true,
+      "include-v-in-tag": true,
+      "prerelease": true,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "chore", "section": "Miscellaneous", "hidden": false },
+        { "type": "docs", "section": "Documentation", "hidden": false },
+        { "type": "refactor", "section": "Code Refactoring", "hidden": false }
+      ]
+    }
+  },
+  "bootstrap-sha": "",
+  "release-search-depth": 400,
+  "tag-separator": "/",
+  "separate-pull-requests": true,
+  "sequential-calls": true,
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "monorepo-tags": true
+}
+

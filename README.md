@@ -157,6 +157,48 @@ To add support for a new programming language:
 4. Update this README with the new implementation
 5. Submit a pull request
 
+## Release
+
+This project uses [release-please](https://github.com/googleapis/release-please) to automate releases for both JavaScript and Python packages. See [RELEASE_PLEASE.md](RELEASE_PLEASE.md) for detailed documentation.
+
+### Automated Release Process
+
+1. **Make Changes**: Create PRs with [conventional commit messages](https://www.conventionalcommits.org/)
+2. **Merge to Main**: Release Please automatically creates release PRs when it detects releasable changes
+3. **Review Release PR**: Check the generated changelog and version bumps
+4. **Merge Release PR**: This triggers automated publishing workflows for both packages
+
+### Manual Release (if needed)
+
+For manual releases or troubleshooting:
+
+**TypeScript Package:**
+
+```bash
+cd js
+pnpm install
+pnpm test
+pnpm run build
+pnpm publish --provenance --access public --no-git-checks
+```
+
+**Python Package:**
+
+```bash
+cd python
+uv sync --dev
+uv run pytest tests
+uv run python -m build
+uv publish
+```
+
+### Prerequisites
+
+- Node.js 18+ with `pnpm` installed (for TypeScript package)
+- Python 3.9+ with [`uv`](https://docs.astral.sh/uv/) installed (for Python package)
+- Publish access to the `@langwatch` npm organization and the `langwatch-ksuid` PyPI project
+- GitHub secrets configured: `NPM_TOKEN` and `PYPI_API_TOKEN`
+
 ## Specification
 
 The KSUID specification ensures compatibility across all language implementations:

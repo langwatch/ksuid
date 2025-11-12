@@ -5,10 +5,14 @@ on:
     types:
       - published
   workflow_dispatch:
+  workflow_call:
 
 jobs:
-  publish-sdk-npm:
-    if: startsWith(github.event.release.tag_name, 'ksuid-javascript/') || (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main')
+  publish:
+    if: |
+      (github.event_name == 'release' && startsWith(github.event.release.tag_name, 'ksuid-javascript/')) ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event_name == 'workflow_call')
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -17,7 +21,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2
+      - uses: pnpm/action-setup@v4
         with:
           version: 10.12.1
 
@@ -41,8 +45,32 @@ jobs:
         working-directory: js
         run: pnpm run build
 
+      - name: Extract version from tag
+        id: version
+        if: github.event_name == 'release'
+        run: |
+          TAG_NAME="${GITHUB_REF#refs/tags/}"
+          VERSION="${TAG_NAME#ksuid-javascript/v}"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Determine dist-tag
+        id: disttag
+        if: github.event_name == 'release'
+        run: |
+          VERSION="${{ steps.version.outputs.version }}"
+          if [[ "$VERSION" == *"-"* ]]; then
+            echo "tag=prerelease" >> "$GITHUB_OUTPUT"
+          else
+            echo "tag=latest" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Publish to npm
         working-directory: js
-        run: pnpm publish --provenance --access public --no-git-checks
+        run: |
+          if [ "${{ github.event_name }}" == "release" ]; then
+            pnpm publish --provenance --access public --no-git-checks --tag ${{ steps.disttag.outputs.tag }}
+          else
+            pnpm publish --provenance --access public --no-git-checks
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
