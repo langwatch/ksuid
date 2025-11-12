@@ -3,7 +3,7 @@
 A modern, zero-dependency Python library for generating prefixed, k-sorted globally unique identifiers (KSUIDs).
 
 [![PyPI Version](https://img.shields.io/pypi/v/langwatch-ksuid.svg?style=flat)](https://pypi.org/project/langwatch-ksuid/)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=main)](https://github.com/langwatch/ksuid/actions)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/langwatch/ksuid/ci.yml?branch=master)](https://github.com/langwatch/ksuid/actions)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Zero Dependencies](https://img.shields.io/badge/dependencies-0-brightgreen.svg)](https://pypi.org/project/langwatch-ksuid/)
 
