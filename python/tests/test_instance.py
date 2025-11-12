@@ -168,10 +168,10 @@ class TestInstance:
 
         # Properties should be read-only
         with pytest.raises(AttributeError):
-            setattr(instance, "scheme", InstanceScheme.MAC_AND_PID)
+            instance.scheme = InstanceScheme.MAC_AND_PID
 
         with pytest.raises(AttributeError):
-            setattr(instance, "identifier", bytes([9, 8, 7, 6, 5, 4, 3, 2]))
+            instance.identifier = bytes([9, 8, 7, 6, 5, 4, 3, 2])
 
     def test_identifier_copy(self):
         """Test that identifier property returns a copy."""

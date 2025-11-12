@@ -1,10 +1,9 @@
 """Test thread safety of KSUID generation."""
 
 import threading
-import time
 from typing import List
 
-from ksuid import generate, parse, Node, Instance, InstanceScheme
+from ksuid import Instance, InstanceScheme, Node, generate, parse
 
 
 def test_thread_safety():

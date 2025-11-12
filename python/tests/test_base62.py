@@ -2,7 +2,7 @@
 
 import pytest
 
-from ksuid.base62 import encode, decode
+from ksuid.base62 import decode, encode
 from ksuid.errors import Base62Error
 
 

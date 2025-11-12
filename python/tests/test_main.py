@@ -6,15 +6,15 @@ from datetime import datetime
 import pytest
 
 from ksuid import (
-    generate,
-    parse,
-    get_environment,
-    set_environment,
-    get_instance,
-    set_instance,
-    Ksuid,
     Instance,
     InstanceScheme,
+    Ksuid,
+    generate,
+    get_environment,
+    get_instance,
+    parse,
+    set_environment,
+    set_instance,
 )
 
 
