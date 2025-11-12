@@ -1,0 +1,101 @@
+name: python-ci
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Cache dependencies
+      uses: actions/cache@v3
+      with:
+        path: |
+          python/.venv
+          ~/.cache/uv
+        key: ${{ runner.os }}-uv-${{ matrix.python-version }}-${{ hashFiles('python/pyproject.toml', 'python/uv.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-uv-${{ matrix.python-version }}-
+
+    - name: Install dependencies
+      working-directory: python
+      run: uv sync --dev --frozen
+
+    - name: Run linting
+      working-directory: python
+      run: |
+        uv run ruff check ksuid/ tests/
+        uv run black --check ksuid/ tests/
+        uv run isort --check-only ksuid/ tests/
+
+    - name: Run type check
+      working-directory: python
+      run: uv run mypy ksuid/
+
+    - name: Run tests
+      working-directory: python
+      run: uv run pytest tests/ -v
+
+    - name: Run test coverage
+      working-directory: python
+      run: uv run pytest tests/ --cov=langwatch-ksuid --cov-report=term-missing --cov-report=html
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        file: ./python/coverage/lcov.info
+        flags: unittests
+        name: codecov-python
+        fail_ci_if_error: false
+
+  build:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Install uv
+      run: |
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        echo "$HOME/.cargo/bin" >> $GITHUB_PATH
+
+    - name: Install dependencies
+      working-directory: python
+      run: |
+        uv sync --dev
+        uv pip install build
+
+    - name: Copy README.md
+      run: |
+        cp README.md python/README.md
+
+    - name: Build package
+      working-directory: python
+      run: uv run python -m build
+
